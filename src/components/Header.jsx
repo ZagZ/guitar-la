@@ -1,5 +1,3 @@
-import { useMemo } from "react";
-
 /* eslint-disable react/prop-types */
 export default function Header({
   cart,
@@ -7,17 +5,14 @@ export default function Header({
   increaseQuantity,
   decreaseQuantity,
   cleanCart,
+  cartTotal,
+  isEmpty,
 }) {
-  const cartTotal = useMemo(
-    () => cart.reduce((acc, guitar) => acc + guitar.price * guitar.quantity, 0),
-    [cart]
-  );
-
   return (
     <header className="py-5 header">
       <div className="container-xl">
         <div className="row justify-content-center justify-content-md-between">
-          <div className="col-8 col-md-3">
+          <div className="col-8 col-md-3"> 
             <a href="index.html">
               <img
                 className="img-fluid"
@@ -35,7 +30,7 @@ export default function Header({
               />
 
               <div id="carrito" className="bg-white p-3">
-                {!cart.length ? (
+                {isEmpty ? (
                   <p className="text-center">El carrito esta vacio</p>
                 ) : (
                   <>
